@@ -733,14 +733,32 @@ body.debug .dbg{ display:flex; }
 .values li{ max-width:74ch; }
 .prose .lead{ font-size:19px; color:var(--ink); line-height:1.55; letter-spacing:-.012em; }
 
-/* About: team photo on the right, centred against the heading + text. */
+/* About: garage test-drive video on the right, centred against the heading
+   + text. Loops muted; click opens it full size with sound. */
 .split--about{ align-items:center; }
 .about-photo{ margin:0; }
-.about-photo img{
-  display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; border-radius:var(--r);
+.about-video{
+  position:relative; display:block; width:100%; padding:0; cursor:zoom-in; overflow:hidden;
+  border-radius:var(--r); background:#0B1220;
   border:1.5px solid rgba(72,196,252,.55);
   box-shadow:0 0 0 3px rgba(72,196,252,.08), 0 18px 40px -22px rgba(10,139,222,.45);
+  transition:box-shadow .3s var(--ease), border-color .3s var(--ease);
 }
+.about-video__clip{ display:block; width:100%; height:auto; transition:scale .7s var(--ease); }
+.about-video:hover, .about-video:focus-visible{
+  outline:none; border-color:var(--brand);
+  box-shadow:0 0 0 1px var(--brand), 0 0 20px 1px rgba(72,196,252,.38), 0 24px 48px -22px rgba(10,139,222,.5);
+}
+.about-video:hover .about-video__clip{ scale:1.04; }
+.about-video__tag{   /* same pill as the season-timeline "View" tag */
+  position:absolute; left:14px; bottom:14px; display:inline-flex; align-items:center; gap:7px;
+  padding:9px 14px; border-radius:999px; color:#fff; background:var(--brand-2);
+  box-shadow:0 8px 20px -8px rgba(10,139,222,.6);
+  font:700 11px/1 var(--sans); letter-spacing:.14em; text-transform:uppercase;
+  transition:scale .25s var(--ease), background .25s;
+}
+.about-video__tag svg{ width:12px; height:12px; }
+.about-video:hover .about-video__tag{ scale:1.06; background:var(--brand); }
 .about-photo figcaption{
   margin-top:14px; text-align:center;
   font:700 11.5px/1.5 var(--sans); letter-spacing:.14em; text-transform:uppercase; color:var(--ink-4);
@@ -1214,6 +1232,13 @@ html.tlm-lock{ overflow:hidden; }
 .tlm[data-mode="photo"] .tlm__nav, .tlm[data-mode="page"] .tlm__nav{ padding-top:0; }
 .tlm[data-mode="photo"] .tlm__count, .tlm[data-mode="page"] .tlm__count{ color:#fff; }
 .tlm[data-mode="photo"] .tlm__body > :not(.tlm__nav), .tlm[data-mode="page"] .tlm__body > :not(.tlm__nav){ display:none; }
+
+/* Video mode (About garage clip): player only — its own controls, no nav. */
+.tlm__vid{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:#000; }
+.tlm__vid[hidden], .tlm__img[hidden]{ display:none; }
+.tlm[data-mode="video"] .tlm__card{ grid-template-columns:1fr; width:min(1200px, 100%, calc((100vh - 48px) * 1206 / 666)); background:#000; }
+.tlm[data-mode="video"] .tlm__media{ min-height:0; aspect-ratio:1206/666; }
+.tlm[data-mode="video"] .tlm__body{ display:none; }
 
 @media(max-width:820px){
   .tlm{ padding:12px; }

@@ -370,13 +370,14 @@ function renderPortfolios() {
 }
 
 /* ── full view ──────────────────────────────────────────────────────
-   One viewer for the season timeline (photo + story), the gallery (photo)
-   and the portfolios (page). Grows out of whatever was clicked and
-   shrinks back into it; ← → and Esc work while it's open. */
+   One viewer for the season timeline (photo + story), the gallery (photo),
+   the portfolios (page) and the About garage clip (video). Grows out of
+   whatever was clicked and shrinks back into it; ← → and Esc work while
+   it's open. onClose runs once it has shrunk back. */
 let viewer = null;
-function openViewer(list, k, fromEl, mode = 'story') {
+function openViewer(list, k, fromEl, mode = 'story', onClose) {
   if (!viewer) viewer = buildViewer();
-  viewer.open(list, k, fromEl, mode);
+  viewer.open(list, k, fromEl, mode, onClose);
 }
 
 function buildViewer() {
@@ -388,7 +389,7 @@ function buildViewer() {
     <div class="tlm__bg" data-close></div>
     <article class="tlm__card">
       <button type="button" class="tlm__x" data-close aria-label="Close">${arrow('M4 4l8 8M12 4l-8 8')}</button>
-      <div class="tlm__media"><img class="tlm__img" alt=""></div>
+      <div class="tlm__media"><img class="tlm__img" alt=""><video class="tlm__vid" controls playsinline preload="auto" hidden></video></div>
       <div class="tlm__body">
         <span class="sec__eyebrow tlm__season"></span>
         <span class="tlm__date"></span>
@@ -402,20 +403,28 @@ function buildViewer() {
       </div>
     </article>`;
   document.body.appendChild(view);
-  const card = $('.tlm__card', view), img = $('.tlm__img', view);
+  const card = $('.tlm__card', view), img = $('.tlm__img', view), vid = $('.tlm__vid', view);
   const still = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  let list = [], cur = 0, from = null;
+  let list = [], cur = 0, from = null, onClose = null;
 
   const fill = k => {
     const m = list[k]; cur = k;
-    img.src = m.src; img.alt = m.title || m.label || '';
+    img.hidden = !!m.video; vid.hidden = !m.video;
+    if (m.video) {
+      if (vid.getAttribute('src') !== m.video) vid.src = m.video;
+      vid.poster = m.poster || ''; vid.currentTime = m.start || 0;
+      vid.setAttribute('aria-label', m.label || '');
+    } else {
+      vid.pause();
+      img.src = m.src; img.alt = m.title || m.label || '';
+    }
     $('.tlm__season', view).innerHTML = m.eyebrow || '';
     $('.tlm__date', view).textContent = m.date || '';
     $('.tlm__title', view).textContent = m.title || '';
     $('.tlm__text', view).textContent = m.text || '';
     $('.tlm__count', view).textContent = m.label || `${k + 1} / ${list.length}`;
     // Preload the neighbours so prev / next is instant.
-    [k - 1, k + 1].forEach(n => { const o = list[(n + list.length) % list.length]; if (o) new Image().src = o.src; });
+    [k - 1, k + 1].forEach(n => { const o = list[(n + list.length) % list.length]; if (o?.src) new Image().src = o.src; });
   };
 
   // Grow the card out of the clicked element (FLIP), or shrink back into it.
@@ -432,11 +441,14 @@ function buildViewer() {
   const close = async () => {
     if (view.hidden) return;
     view.classList.remove('is-open');
+    vid.pause();
     await morph(from, false);
     view.hidden = true; document.documentElement.classList.remove('tlm-lock');
     from?.focus?.({ preventScroll: true });
+    onClose?.(vid.hidden ? 0 : vid.currentTime); onClose = null;
   };
   const step = d => {
+    if (list.length < 2) return;
     const k = (cur + d + list.length) % list.length;
     card.classList.add('is-swapping');
     setTimeout(() => { fill(k); card.classList.remove('is-swapping'); }, still ? 0 : 160);
@@ -454,15 +466,36 @@ function buildViewer() {
   });
 
   return {
-    open(l, k, el, mode) {
-      list = l; from = el;
+    open(l, k, el, mode, done) {
+      list = l; from = el; onClose = done || null;
       view.dataset.mode = mode;
       fill(k);
+      // Start with sound straight away, while the click still counts as a
+      // user gesture — browsers block audible play() otherwise.
+      if (list[k].video) { vid.muted = false; vid.play().catch(() => {}); }
       view.hidden = false; document.documentElement.classList.add('tlm-lock');
       requestAnimationFrame(() => view.classList.add('is-open'));
       morph(el, true).then(() => $('.tlm__x', view).focus({ preventScroll: true }));
     },
   };
+}
+
+/* ── about video (index.html) ──────────────────────────────────────
+   The garage clip plays muted on a loop (the only way browsers allow
+   autoplay). Click opens it in the full view, picking up from the same
+   moment with sound; closing it resumes the silent loop from wherever
+   the viewer stopped. */
+function initAboutVideo() {
+  const btn = $('.about-video'); if (!btn) return;
+  const clip = $('video', btn);
+  const still = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if (still) { clip.removeAttribute('autoplay'); clip.pause(); }
+  btn.addEventListener('click', () => {
+    clip.pause();
+    openViewer([{ video: clip.currentSrc || clip.src, poster: clip.poster, start: clip.currentTime,
+                  label: 'Test driving KHRONOS in our garage' }], 0, btn, 'video',
+      t => { clip.currentTime = t; if (!still) clip.play().catch(() => {}); });
+  });
 }
 
 /* ── sponsor wall ───────────────────────────────────────────────────
@@ -1841,6 +1874,6 @@ function initRobot3D(stage, mv, primary) {
 /* ── boot ───────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   renderTeam(); renderTimeline(); renderGallery(); renderPortfolios(); renderSponsors(); renderTicker(); initTickerTuner();
-  observeReveals(); initLogoTuner(); renderHexes(); initSparks(); initKicker(); initHeader(); initMenu(); initCounters(); initForm(); initRobots3D();
+  observeReveals(); initLogoTuner(); renderHexes(); initSparks(); initKicker(); initHeader(); initMenu(); initCounters(); initForm(); initAboutVideo(); initRobots3D();
   const y = $('#year'); if (y) y.textContent = new Date().getFullYear();
 });

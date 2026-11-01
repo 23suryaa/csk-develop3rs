@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=105">
+<link rel="stylesheet" href="styles.css?v=107">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -171,9 +171,17 @@
       </div>
       </div>
 
+      <!-- Plays muted on a loop; click opens it full size with sound (script.js → initAboutVideo). -->
       <figure class="about-photo" data-reveal>
-        <img src="assets/about/ilt-finalists.webp" alt="CSK Develop3rs with KHRONOS and their awards after the Palmdale ILT" width="1400" height="1400" loading="lazy">
-        <figcaption>Finalist Alliance at the ILT, and on to the State Championship.</figcaption>
+        <button type="button" class="about-video" aria-label="Play the KHRONOS garage test-drive video full size, with sound">
+          <video class="about-video__clip" src="assets/about/garage-khronos.mp4" poster="assets/about/garage-khronos-poster.webp"
+                 width="1206" height="666" autoplay muted loop playsinline aria-hidden="true"></video>
+          <span class="about-video__tag">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6L13 8z"/></svg>
+            Watch with sound
+          </span>
+        </button>
+        <figcaption>Test driving KHRONOS in our garage.</figcaption>
       </figure>
     </div>
   </div>
@@ -291,6 +299,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=106"></script>
+<script src="script.js?v=108"></script>
 </body>
 </html>
