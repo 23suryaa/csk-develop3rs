@@ -1,0 +1,37 @@
+# Source CAD — huge, and not needed to run the site.
+# Keep the originals in your CAD folder; only assets/robot.glb ships.
+*.stl
+*.step
+*.stp
+*.3mf
+*.sldasm
+*.sldprt
+*.f3d
+
+# Intermediates from tools/stl_to_glb.py
+assets/robot.raw.glb
+assets/robot.q.glb
+assets/robot.opt.glb
+
+# GitHub hard-blocks any file over 100 MB, so the full-quality mesh
+# cannot be pushed — the push will fail, not warn. Kept local only.
+# If you deploy somewhere without that limit (Netlify/Cloudflare),
+# delete this line and read the bandwidth warning in README.md first.
+assets/robot-max.glb
+
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Untouched materials, so tune_materials.py can be re-run from a clean
+# baseline instead of compounding its saturation boost. Not deployed.
+robot-original.glb
+*.gltf
+
+# Raw photos and drafts sitting in the project root — not used by the
+# site. Everything the site shows lives under assets/.
+/*.heic
+/*.JPG
+/*.jpg
+/*.png
+/*.ttf

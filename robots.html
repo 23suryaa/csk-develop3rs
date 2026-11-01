@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Robots · CSK Develop3rs · FTC 23441</title>
+<meta name="description" content="The robots of CSK Develop3rs, FTC Team 23441 — interactive CAD models of KHRONOS, ROBONEER, and ORCA.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="CSK Develop3rs · FTC Team 23441">
+<meta property="og:description" content="FIRST Tech Challenge Team 23441 from Cerritos, CA. Think Award winners at the Los Angeles Championship.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/logo.png">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F1722'/><path d='M16 7l8 14H8z' fill='none' stroke='%2348C4FC' stroke-width='2.4' stroke-linejoin='round'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=105">
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ═══ HEADER ═════════════════════════════════════════════════ -->
+<header class="hdr" id="hdr">
+  <a class="brand" href="index.html#home">
+    <img class="brand__logo" src="assets/logo-mark.png" alt="CSK Develop3rs logo">
+    <span class="brand__txt">
+      <b>CSK Develop3rs</b>
+    </span>
+  </a>
+
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="index.html#about">About</a>
+    <a href="robots.html" class="is-active" aria-current="page">Robots</a>
+    <a href="index.html#team">Team</a>
+    <a href="timeline.html">Season Timeline</a>
+    <a href="portfolios.html">Portfolios</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="index.html#sponsors">Sponsors</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+
+  <div class="hdr__cta">
+    <a class="btn btn--primary" href="index.html#contact">Sponsor us</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══ ROBOT ══════════════════════════════════════════════════ -->
+<section class="sec sec--soft sec--page" id="robot">
+  <div class="wrap">
+    <header class="pagehead">
+      <h1 class="bigtitle">Our <span>Robots</span></h1>
+      <nav class="jump" aria-label="Jump to a robot">
+        <a href="#khronos"><b>KHRONOS</b><span>DECODE · Final</span></a>
+        <a href="#roboneer"><b>ROBONEER</b><span>DECODE · Prototype</span></a>
+        <a href="#orca"><b>ORCA</b><span>Into the Deep</span></a>
+      </nav>
+    </header>
+
+    <header class="sec__head" id="khronos">
+      <span class="sec__eyebrow">DECODE<span>2025–2026</span></span>
+      <h2 class="sec__title sec__title--display">KHRONOS</h2>
+      <p class="sec__sub">
+        Our final DECODE robot, run at League Meet 3, the Palmdale ILT, and the
+        LA Championship. It ranked 2nd at League Meet 3, won the Think Award and
+        made the Finalist Alliance at Palmdale with a season-best 114.4 OPR,
+        then took the Think Award again at the LA Championship.
+      </p>
+    </header>
+
+    <div class="split split--mid">
+      <div>
+        <!-- TODO: confirm every spec below — these are placeholders -->
+        <dl class="kv">
+          <div><dt>Drivetrain</dt><dd>Mecanum · field-centric</dd></div>
+          <div><dt>Frame</dt><dd>Custom carbon fiber</dd></div>
+          <div><dt>Control</dt><dd>REV Control Hub + Expansion Hub</dd></div>
+          <div><dt>Software</dt><dd>Java · Road Runner · AprilTag localization</dd></div>
+          <div><dt>Autonomous</dt><dd>Ranked <strong>#276</strong> worldwide (38.4 auto OPR)</dd></div>
+          <div><dt>CAD</dt><dd>Onshape — 287 meshes, 79 materials</dd></div>
+          <div><dt>Fabrication</dt><dd>3D print, CNC, lathe</dd></div>
+        </dl>
+      </div>
+
+    <div class="stage" id="stage">
+      <p class="stage__cap"><em>Interactive CAD</em> model · <strong>drag</strong> to rotate</p>
+      <model-viewer
+        id="robot3d"
+        data-src="assets/robot-color.glb"
+        data-autoload
+        loading="eager"
+        alt="Interactive 3D model of the CSK Develop3rs competition robot — drag to rotate"
+        poster="assets/robot.jpg"
+        camera-controls
+        disable-zoom
+        disable-tap
+        disable-pan
+        auto-rotate
+        auto-rotate-delay="2800"
+        rotation-per-second="14deg"
+        interaction-prompt="none"
+        touch-action="pan-y"
+        environment-image="assets/studio.hdr"
+        tone-mapping="neutral"
+        shadow-intensity="1.15"
+        shadow-softness="0.5"
+        exposure="0.93"
+        camera-orbit="16.5deg 89.1deg 1.530m"
+        min-camera-orbit="auto 5deg auto"
+        max-camera-orbit="auto 110deg auto"
+        field-of-view="22.5deg"
+        min-field-of-view="9deg"
+        max-field-of-view="45deg"></model-viewer>
+
+      <img class="stage__fallback" src="assets/robot.jpg" alt="CSK Develop3rs competition robot" hidden>
+      <span class="stage__ph">assets/robot.jpg<em>add a robot photo as a fallback</em></span>
+
+      <div class="stage__load" aria-live="polite">
+        <div class="stage__ring"></div>
+        <b>Loading CAD</b>
+        <span class="stage__pct">0%</span>
+        <div class="stage__prog"><span></span></div>
+      </div>
+
+      <!-- Dev tools. Add ?debug=1 to the URL to show. -->
+      <div class="dbg" id="dbg">
+        <span class="l">MESH</span>
+        <button type="button" data-src="assets/robot-color.glb" data-tris="9.07M" class="is-on">FULL</button>
+        <span class="l">UP</span>
+        <button type="button" id="dbg-flip">FLIP</button>
+        <button type="button" id="dbg-spin">SPIN</button>
+        <button type="button" id="dbg-reset">RESET</button>
+        <span class="stat" id="dbg-stat">loading…</span>
+        <span class="stat" id="dbg-orient">orientation 0 0 0</span>
+      </div>
+    </div>
+    </div>
+
+    <!-- ── ROBONEER ── -->
+    <header class="sec__head" id="roboneer" style="margin-top:110px">
+      <span class="sec__eyebrow">DECODE<span>2025–2026</span></span>
+      <h2 class="sec__title sec__title--display">ROBONEER</h2>
+      <p class="sec__sub">
+        Our first DECODE prototype, run at League Meets 0, 1, and 2. It ranked
+        1st at League Meet 0 and 3rd at League Meet 2.
+      </p>
+    </header>
+
+    <div class="split split--mid">
+      <div>
+        <dl class="kv">
+          <div><dt>Drivetrain</dt><dd>Mecanum · field-centric</dd></div>
+          <div><dt>Frame</dt><dd>Custom aluminum</dd></div>
+          <div><dt>Control</dt><dd>REV Control Hub + Expansion Hub</dd></div>
+          <div><dt>Software</dt><dd>Java · Road Runner · AprilTag localization</dd></div>
+          <div><dt>CAD</dt><dd>Onshape — 210 meshes, 47 materials</dd></div>
+          <div><dt>Fabrication</dt><dd>3D print, CNC, lathe</dd></div>
+        </dl>
+      </div>
+
+    <!-- Click-to-load: the model sits in data-src and only downloads when
+         the blurred preview is clicked. Only KHRONOS loads on its own. -->
+    <div class="stage" id="stage-roboneer">
+      <p class="stage__cap"><em>Interactive CAD</em> model · <strong>drag</strong> to rotate</p>
+      <model-viewer
+        id="roboneer3d"
+        data-tune="deep"
+        data-src="assets/roboneer.glb"
+        alt="Interactive 3D model of ROBONEER — drag to rotate"
+        camera-controls
+        disable-zoom
+        disable-tap
+        disable-pan
+        auto-rotate
+        auto-rotate-delay="2800"
+        rotation-per-second="14deg"
+        interaction-prompt="none"
+        touch-action="pan-y"
+        environment-image="assets/studio.hdr"
+        tone-mapping="neutral"
+        shadow-intensity="1.15"
+        shadow-softness="0.5"
+        exposure="0.93"
+        camera-orbit="16.5deg 89.1deg 1.432m"
+        min-camera-orbit="auto 5deg auto"
+        max-camera-orbit="auto 110deg auto"
+        field-of-view="22.5deg"
+        min-field-of-view="9deg"
+        max-field-of-view="45deg">
+        <button type="button" class="gate">
+          <img class="gate__img" src="assets/roboneer-poster.webp?v=2" alt="" width="1062" height="1006" loading="lazy">
+          <span class="gate__btn">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6L13 8z"/></svg>
+            Click to view CAD
+          </span>
+        </button>
+      </model-viewer>
+
+      <div class="stage__load" aria-live="polite">
+        <div class="stage__ring"></div>
+        <b>Loading CAD</b>
+        <span class="stage__pct">0%</span>
+        <div class="stage__prog"><span></span></div>
+      </div>
+    </div>
+    </div>
+
+    <!-- ── ORCA ── -->
+    <header class="sec__head" id="orca" style="margin-top:110px">
+      <span class="sec__eyebrow">INTO THE DEEP<span>2024–2025</span></span>
+      <h2 class="sec__title sec__title--display">ORCA</h2>
+      <p class="sec__sub">
+        Our INTO THE DEEP robot. It won the Design Award at the Monrovia ILT,
+        and ranked 4th at League Meet 0 and 6th at League Meet 1.
+      </p>
+    </header>
+
+    <div class="split split--mid">
+      <div>
+        <dl class="kv">
+          <div><dt>Drivetrain</dt><dd>Mecanum · field-centric</dd></div>
+          <div><dt>Frame</dt><dd>Custom aluminum</dd></div>
+          <div><dt>Control</dt><dd>REV Control Hub + Expansion Hub</dd></div>
+          <div><dt>Software</dt><dd>Java · Road Runner</dd></div>
+          <div><dt>CAD</dt><dd>Onshape — 192 meshes, 30 materials</dd></div>
+          <div><dt>Fabrication</dt><dd>3D print, CNC, lathe</dd></div>
+        </dl>
+      </div>
+
+    <div class="stage" id="stage-orca">
+      <p class="stage__cap"><em>Interactive CAD</em> model · <strong>drag</strong> to rotate</p>
+      <model-viewer
+        id="orca3d"
+        data-tune="deep"
+        data-src="assets/orca.glb"
+        alt="Interactive 3D model of ORCA — drag to rotate"
+        camera-controls
+        disable-zoom
+        disable-tap
+        disable-pan
+        auto-rotate
+        auto-rotate-delay="2800"
+        rotation-per-second="14deg"
+        interaction-prompt="none"
+        touch-action="pan-y"
+        environment-image="assets/studio.hdr"
+        tone-mapping="neutral"
+        shadow-intensity="1.15"
+        shadow-softness="0.5"
+        exposure="0.93"
+        camera-orbit="16.5deg 89.1deg 1.497m"
+        min-camera-orbit="auto 5deg auto"
+        max-camera-orbit="auto 110deg auto"
+        field-of-view="22.5deg"
+        min-field-of-view="9deg"
+        max-field-of-view="45deg">
+        <button type="button" class="gate">
+          <img class="gate__img" src="assets/orca-poster.webp?v=2" alt="" width="1062" height="1006" loading="lazy">
+          <span class="gate__btn">
+            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6L13 8z"/></svg>
+            Click to view CAD
+          </span>
+        </button>
+      </model-viewer>
+
+      <div class="stage__load" aria-live="polite">
+        <div class="stage__ring"></div>
+        <b>Loading CAD</b>
+        <span class="stage__pct">0%</span>
+        <div class="stage__prog"><span></span></div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <img class="foot__logo" src="assets/logo-dark.png" alt="CSK Develop3rs">
+      <p>FIRST Tech Challenge Team 23441 · Cerritos, California. Student-built, community-funded.</p>
+    </div>
+    <nav class="foot__nav" aria-label="Footer">
+      <a href="index.html#about">About</a><a href="robots.html">Robots</a><a href="index.html#team">Team</a><a href="timeline.html">Season Timeline</a>
+      <a href="portfolios.html">Portfolios</a><a href="gallery.html">Gallery</a><a href="index.html#sponsors">Sponsors</a><a href="index.html#contact">Contact</a>
+      <a href="https://ftcscout.org/teams/23441" target="_blank" rel="noopener">FTCScout ↗</a>
+    </nav>
+    <p class="foot__legal">
+      <span>© <span id="year">2026</span> CSK Develop3rs · FTC 23441</span>
+      <small>
+        FIRST<sup>®</sup> and FIRST<sup>®</sup> Tech Challenge are trademarks of FIRST<sup>®</sup>,
+        which does not sponsor, support, or endorse this site. Competition data via FTCScout.
+      </small>
+    </p>
+  </div>
+</footer>
+
+<script type="module" src="https://unpkg.com/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
+<script src="script.js?v=105"></script>
+</body>
+</html>

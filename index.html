@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CSK Develop3rs · FTC Team 23441</title>
+<meta name="description" content="CSK Develop3rs — FIRST Tech Challenge Team 23441 from Cerritos, California. Think Award winners at the LA Championship. Student-built competition robotics.">
+<meta name="theme-color" content="#ffffff">
+<meta property="og:title" content="CSK Develop3rs · FTC Team 23441">
+<meta property="og:description" content="FIRST Tech Challenge Team 23441 from Cerritos, CA. Think Award winners at the Los Angeles Championship.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/logo.png">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%230F1722'/><path d='M16 7l8 14H8z' fill='none' stroke='%2348C4FC' stroke-width='2.4' stroke-linejoin='round'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=105">
+<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ═══ HEADER ═════════════════════════════════════════════════ -->
+<header class="hdr" id="hdr">
+  <a class="brand" href="#home">
+    <img class="brand__logo" src="assets/logo-mark.png" alt="CSK Develop3rs logo">
+    <span class="brand__txt">
+      <b>CSK Develop3rs</b>
+    </span>
+  </a>
+
+  <nav class="nav" id="nav" aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="robots.html">Robots</a>
+    <a href="#team">Team</a>
+    <a href="timeline.html">Season Timeline</a>
+    <a href="portfolios.html">Portfolios</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="#sponsors">Sponsors</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <div class="hdr__cta">
+    <a class="btn btn--primary" href="#contact">Sponsor us</a>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════ -->
+<section class="hero" id="home">
+  <canvas class="sparks" id="sparks" aria-hidden="true"></canvas>
+
+  <div class="hero__in">
+    <div>
+      <span class="hero__kicker r" style="--d:0ms">CSK Develop3rs</span>
+
+      <h1 class="hero__name r" style="--d:70ms" aria-label="Team 23441">
+        <span aria-hidden="true"><i>T</i><i>E</i><i>A</i><i>M</i></span>
+        <span class="grad" aria-hidden="true">23441</span>
+      </h1>
+
+      <p class="hero__sub r" style="--d:150ms">
+        The FIRST<sup>®</sup> Tech Challenge team from Cerritos, California.
+        We design, machine, and program a full competition robot every season,
+        and document every decision along the way.
+      </p>
+
+      <div class="hero__acts r" style="--d:220ms">
+        <a class="btn btn--primary btn--lg" href="robots.html">
+          Our robots
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a class="btn btn--ghost btn--lg" href="#team">Meet the team</a>
+        <a class="btn btn--ghost btn--lg" href="#contact">Sponsor us</a>
+      </div>
+
+      <!-- FTCScout, 2025-26: OPR #455 and auto #280 of 8,360 teams -->
+      <dl class="hero__stats r" style="--d:300ms">
+        <div class="hstat">
+          <dt>Top worldwide</dt>
+          <dd><span data-count="5.4">5.4</span>%</dd>
+        </div>
+        <div class="hstat">
+          <dt>Top in autonomous</dt>
+          <dd><span data-count="3.3">3.3</span>%</dd>
+        </div>
+        <div class="hstat">
+          <dt>2025–26 OPR</dt>
+          <dd><span data-count="114.4">114.4</span></dd>
+        </div>
+        <div class="hstat">
+          <dt>Awards</dt>
+          <dd><span data-count="4">4</span></dd>
+        </div>
+      </dl>
+    </div>
+
+  </div>
+
+    <!-- ── hexagon photo cluster ── -->
+    <div class="hexes" id="hexes" aria-label="Team photos"></div>
+</section>
+
+<!-- ═══ SPONSOR TICKER ══════════════════════════════════════════ -->
+<div class="ticker" id="ticker">
+  <span class="ticker__label">Sponsored by</span>
+  <div class="ticker__win">
+    <div class="ticker__track" id="ticker-track"><!-- rendered from script.js --></div>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ══════════════════════════════════════════════════ -->
+<section class="sec" id="about">
+  <div class="wrap">
+    <!-- Heading lives in the left column so the photo centres on the whole block. -->
+    <div class="split split--about">
+      <div>
+      <header class="sec__head" data-reveal>
+        <span class="sec__eyebrow">About the team</span>
+        <h2 class="sec__title">Born in a Garage. Built for the Global Stage.</h2>
+        <p class="sec__sub">
+          We weren't handed a machine shop or a school lab. We bought our own
+          tools, moved into a garage, and spent three seasons building our way
+          out of it.
+        </p>
+      </header>
+
+      <div class="prose" data-reveal>
+        <p class="lead">
+          We started in 2023 as an independent community team without school
+          affiliation. That meant everything including space, tools, funding,
+          and training had to be built from scratch alongside our first robot.
+        </p>
+        <p>
+          After a tough 2024–25 season, we spent the off-season overhauling our
+          engineering process. We replaced guesswork with structured design
+          reviews, rigorous test logging, and clean, easily debugged autonomous
+          code.
+        </p>
+        <p>
+          The discipline paid off. The next season, our OPR surged from 35 to
+          114, launching us into the top 500 teams globally. We won back-to-back
+          Think Awards for our technical documentation, validating our process
+          far better than any match record.
+        </p>
+
+        <ul class="values">
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>
+            <span><b>Log before you fix.</b> Every failure is documented with its underlying root cause, not just a quick patch.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>
+            <span><b>Document to decentralize.</b> Knowledge should not live with one person. If only one student can run a system, the team does not truly know it.</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 10.5l4 4 8-9"/></svg>
+            <span><b>Gracious Professionalism.</b> Lend the tool, share the code, win the match.</span>
+          </li>
+        </ul>
+      </div>
+      </div>
+
+      <figure class="about-photo" data-reveal>
+        <img src="assets/about/ilt-finalists.webp" alt="CSK Develop3rs with KHRONOS and their awards after the Palmdale ILT" width="1400" height="1400" loading="lazy">
+        <figcaption>Finalist Alliance at the ILT, and on to the State Championship.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TEAM ═══════════════════════════════════════════════════ -->
+<section class="sec" id="team">
+  <div class="wrap">
+    <header class="sec__head sec__head--mid" data-reveal>
+      <h2 class="sec__title">Our team.</h2>
+      <p class="flip-hint">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 6.5a5.5 5.5 0 0 1 10-2.2M13.5 9.5a5.5 5.5 0 0 1-10 2.2"/><path d="M12.8 1.8v2.8H10M3.2 14.2v-2.8H6"/></svg>
+        <span class="flip-hint__mouse">Click any card to flip it</span><span class="flip-hint__touch">Tap any card to flip it</span>
+      </p>
+    </header>
+    <div class="roster" id="roster"><!-- rendered from script.js --></div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ════════════════════════════════════════════════ -->
+<section class="sec sec--soft" id="contact">
+  <div class="wrap">
+    <header class="sec__head" data-reveal>
+      <span class="sec__eyebrow">Contact</span>
+      <h2 class="sec__title">Get in touch.</h2>
+      <p class="sec__sub">
+        Sponsorship, mentorship, a demo at your school, or just want to talk
+        drivetrains — we answer everything.
+      </p>
+    </header>
+
+    <div class="contact">
+      <div data-reveal>
+        <ul class="chan">
+          <!-- TODO: fill in real handles -->
+          <li><span>Email</span><a href="mailto:cskdevelop3rsftc@gmail.com">cskdevelop3rsftc@gmail.com</a></li>
+          <li><span>Website</span><a href="https://23441.com" target="_blank" rel="noopener">23441.com</a></li>
+          <li><span>FTCScout</span><a href="https://ftcscout.org/teams/23441" target="_blank" rel="noopener">ftcscout.org/teams/23441</a></li>
+          <li><span>Instagram</span><a href="https://www.instagram.com/team.23441/" target="_blank" rel="noopener">@team.23441</a></li>
+          <li><span>GitHub</span><a href="https://github.com/CSKDevelop3rsFTC" target="_blank" rel="noopener">github.com/CSKDevelop3rsFTC</a></li>
+          <li><span>Location</span><span>Cerritos, California</span></li>
+        </ul>
+      </div>
+
+      <form class="form" id="form" data-reveal novalidate>
+        <div class="field">
+          <label for="f-name">Name</label>
+          <input id="f-name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="field">
+          <label for="f-topic">Topic</label>
+          <select id="f-topic" name="topic">
+            <option>Sponsorship</option>
+            <option>Mentorship / rookie team help</option>
+            <option>Demo or outreach request</option>
+            <option>Media / press</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Message</label>
+          <textarea id="f-msg" name="message" rows="5" required placeholder="Tell us what's up…"></textarea>
+        </div>
+        <button class="btn btn--primary btn--full btn--lg" type="submit">Send message</button>
+        <p class="form__note" id="form-note" role="status"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SPONSORS ═══════════════════════════════════════════════ -->
+<section class="sec" id="sponsors">
+  <div class="wrap">
+    <header class="sec__head sec__head--mid" data-reveal>
+      <span class="sec__eyebrow">Sponsors</span>
+      <h2 class="sec__title">Who makes it possible.</h2>
+    </header>
+
+    <div class="wall" id="tiers"><!-- rendered from script.js --></div>
+
+    <div class="wall__cta" data-reveal>
+      <a class="btn btn--primary btn--lg" href="#contact">
+        Become a sponsor
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ═══ FOOTER ═════════════════════════════════════════════════ -->
+<footer class="foot">
+  <div class="wrap foot__in">
+    <div class="foot__brand">
+      <img class="foot__logo" src="assets/logo-dark.png" alt="CSK Develop3rs">
+      <p>FIRST Tech Challenge Team 23441 · Cerritos, California. Student-built, community-funded.</p>
+    </div>
+    <nav class="foot__nav" aria-label="Footer">
+      <a href="#about">About</a><a href="robots.html">Robots</a><a href="#team">Team</a><a href="timeline.html">Season Timeline</a>
+      <a href="portfolios.html">Portfolios</a><a href="gallery.html">Gallery</a><a href="#sponsors">Sponsors</a><a href="#contact">Contact</a>
+      <a href="https://ftcscout.org/teams/23441" target="_blank" rel="noopener">FTCScout ↗</a>
+    </nav>
+    <p class="foot__legal">
+      <span>© <span id="year">2026</span> CSK Develop3rs · FTC 23441</span>
+      <small>
+        FIRST<sup>®</sup> and FIRST<sup>®</sup> Tech Challenge are trademarks of FIRST<sup>®</sup>,
+        which does not sponsor, support, or endorse this site. Competition data via FTCScout.
+      </small>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js?v=105"></script>
+</body>
+</html>
