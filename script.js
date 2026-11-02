@@ -413,6 +413,7 @@ function buildViewer() {
     if (m.video) {
       if (vid.getAttribute('src') !== m.video) vid.src = m.video;
       vid.poster = m.poster || ''; vid.currentTime = m.start || 0;
+      view.style.setProperty('--ar', m.ar || 16 / 9);
       vid.setAttribute('aria-label', m.label || '');
     } else {
       vid.pause();
@@ -480,21 +481,23 @@ function buildViewer() {
   };
 }
 
-/* ── about video (index.html) ──────────────────────────────────────
-   The garage clip plays muted on a loop (the only way browsers allow
+/* ── about videos (index.html) ─────────────────────────────────────
+   Each garage clip plays muted on a loop (the only way browsers allow
    autoplay). Click opens it in the full view, picking up from the same
    moment with sound; closing it resumes the silent loop from wherever
    the viewer stopped. */
 function initAboutVideo() {
-  const btn = $('.about-video'); if (!btn) return;
-  const clip = $('video', btn);
   const still = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if (still) { clip.removeAttribute('autoplay'); clip.pause(); }
-  btn.addEventListener('click', () => {
-    clip.pause();
-    openViewer([{ video: clip.currentSrc || clip.src, poster: clip.poster, start: clip.currentTime,
-                  label: 'Test driving KHRONOS in our garage' }], 0, btn, 'video',
-      t => { clip.currentTime = t; if (!still) clip.play().catch(() => {}); });
+  $$('.about-video').forEach(btn => {
+    const clip = $('video', btn);
+    if (still) { clip.removeAttribute('autoplay'); clip.pause(); }
+    btn.addEventListener('click', () => {
+      clip.pause();
+      openViewer([{ video: clip.currentSrc || clip.src, poster: clip.poster, start: clip.currentTime,
+                    ar: clip.videoWidth / clip.videoHeight || clip.width / clip.height,
+                    label: btn.dataset.label || '' }], 0, btn, 'video',
+        t => { clip.currentTime = t; if (!still) clip.play().catch(() => {}); });
+    });
   });
 }
 

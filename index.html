@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=107">
+<link rel="stylesheet" href="styles.css?v=109">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
@@ -171,18 +171,35 @@
       </div>
       </div>
 
-      <!-- Plays muted on a loop; click opens it full size with sound (script.js → initAboutVideo). -->
-      <figure class="about-photo" data-reveal>
-        <button type="button" class="about-video" aria-label="Play the KHRONOS garage test-drive video full size, with sound">
-          <video class="about-video__clip" src="assets/about/garage-khronos.mp4" poster="assets/about/garage-khronos-poster.webp"
-                 width="1206" height="666" autoplay muted loop playsinline aria-hidden="true"></video>
-          <span class="about-video__tag">
-            <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6L13 8z"/></svg>
-            Watch with sound
-          </span>
-        </button>
-        <figcaption>Test driving KHRONOS in our garage.</figcaption>
-      </figure>
+      <!-- Each clip plays muted on a loop; click opens it full size with sound
+           (script.js → initAboutVideo). data-label names it in the player. -->
+      <div class="about-videos" data-reveal>
+        <figure class="about-photo">
+          <button type="button" class="about-video" data-label="Testing teleop with KHRONOS in our garage"
+                  aria-label="Play the KHRONOS teleop test video full size, with sound">
+            <video class="about-video__clip" src="assets/about/garage-khronos.mp4" poster="assets/about/garage-khronos-poster.webp"
+                   width="1206" height="666" autoplay muted loop playsinline aria-hidden="true"></video>
+            <span class="about-video__tag">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6L13 8z"/></svg>
+              Watch with sound
+            </span>
+          </button>
+          <figcaption>Testing teleop with KHRONOS in our garage.</figcaption>
+        </figure>
+
+        <figure class="about-photo">
+          <button type="button" class="about-video" data-label="Testing our autonomous in the garage, scoring with 100% accuracy"
+                  aria-label="Play the autonomous test video full size, with sound">
+            <video class="about-video__clip" src="assets/about/garage-auton.mp4" poster="assets/about/garage-auton-poster.webp"
+                   width="682" height="450" autoplay muted loop playsinline aria-hidden="true"></video>
+            <span class="about-video__tag">
+              <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.2v9.6L13 8z"/></svg>
+              Watch with sound
+            </span>
+          </button>
+          <figcaption>Testing our autonomous in the garage, scoring with 100% accuracy.</figcaption>
+        </figure>
+      </div>
     </div>
   </div>
 </section>
@@ -299,6 +316,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=108"></script>
+<script src="script.js?v=109"></script>
 </body>
 </html>
